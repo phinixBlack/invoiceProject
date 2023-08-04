@@ -43,25 +43,26 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{asset('public/assets/vendor/fonts/boxicons.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{asset('public/assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{asset('public/assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{asset('public/assets/css/demo.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('public/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('public/assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{asset('public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
     <!-- Page CSS -->
     <!-- Page -->
-    <link rel="stylesheet" href="{{asset('public/assets/vendor/css/pages/page-auth.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/assets/vendor/css/pages/page-auth.css') }}" />
     <!-- Helpers -->
-    <script src="{{asset('public/assets/vendor/js/helpers.js')}}"></script>
+    <script src="{{ asset('public/assets/vendor/js/helpers.js') }}"></script>
+    <link rel="stylesheet" href="{{asset('public/izitoast/css/iziToast.min.css')}}" />
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{asset('public/assets/js/config.js')}}"></script>
+    <script src="{{ asset('public/assets/js/config.js') }}"></script>
   </head>
 
   <body>
@@ -138,14 +139,14 @@
               <h4 class="mb-2">Welcome to Sneat! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="loginForm" class="mb-3" action="#" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
+                    name="email"
                     placeholder="Enter your email or username"
                     autofocus
                   />
@@ -185,22 +186,54 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{asset('public/assets/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{asset('public/assets/vendor/libs/popper/popper.js')}}"></script>
-    <script src="{{asset('public/assets/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{asset('public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+    <script src="{{ asset('public/assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('public/assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('public/assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="{{asset('public/assets/vendor/js/menu.js')}}"></script>
+    <script src="{{ asset('public/assets/vendor/js/menu.js') }}"></script>
+    <script src="{{asset('public/izitoast/js/iziToast.min.js')}}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="{{asset('public/assets/js/main.js')}}"></script>
+    <script src="{{ asset('public/assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        $('#loginForm').submit(function(e) {
+            e.preventDefault();
+            var fd = new FormData(this);
+            fd.append('_token', "{{ csrf_token() }}");
+
+            $.ajax({
+                url: "{{ route('auth.login.login') }}",
+                type: "post",
+                data: fd,
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                beforeSend: function() {
+                    $('.generalsets').prop('disabled', true);
+                },
+                success: function(result) {
+                    if (result.status === true) {
+                      location.href = "{{ route('item.index') }}"
+
+                    } else {
+                        iziToast.error({
+                                message: result.msg,
+                                position: 'topRight'
+                            });
+                    }
+                }
+            })
+
+        });
+    </script>
   </body>
 </html>
