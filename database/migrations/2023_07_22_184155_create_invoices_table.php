@@ -19,16 +19,20 @@ return new class extends Migration
             $table->bigInteger('item_id');
             $table->bigInteger('port_loading_id');
             $table->string('bl_no');
+            $table->date('bl_date');
             $table->bigInteger('buyer_id');
             $table->string('net_weight');
             $table->string('rate');
             $table->string('packs');
             $table->string('gross_weight');
             $table->string('hs_code');
-            $table->string('invoice_date')->nullable();
+            $table->date('invoice_date')->nullable();
             $table->bigInteger('port_of_discharge');
             $table->bigInteger('seller_id');
-            $table->date('bl_date');
+            $table->string('import_bl_no');
+            $table->date('import_bl_date');
+            $table->string('import_inv_no');
+            $table->date('import_inv_date');
             $table->string('bank_name');
             $table->string('incoterms');
             $table->string('trading_co');
@@ -44,6 +48,11 @@ return new class extends Migration
             $table->string('origin');
             $table->enum('freight_check',['true','false'])->default('false');
             $table->enum('bank_check',['true','false'])->default('false');
+            $table->enum('status_payment',['unpaid','paid','partial-payment'])->default('unpaid');
+            $table->string('vessel_name')->nullable();
+            $table->double('freight')->nullable();
+            $table->integer('amount_paid')->default(0);
+            $table->double('amount_left')->default(0);
             $table->timestamps();
         });
     }

@@ -52,7 +52,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlSelect1" class="form-label">Customer</label>
+                                        <label for="exampleFormControlSelect1" class="form-label">Address</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address">{{$customer->address}}</textarea>
                                     </div>
 
@@ -107,6 +107,11 @@
                                         <label for="defaultInput" class="form-label">Routing No</label>
                                         <input id="defaultInput" class="form-control" type="text" name="routing_no" value="{{$customer->routing_no}}"
                                             placeholder="Enter Routing No..." />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="defaultInput" class="form-label">IFSC Code</label>
+                                        <input id="defaultInput" class="form-control" type="text" name="ifsc" value="{{$customer->ifsc}}"
+                                            placeholder="Enter IFSC Code..." />
                                     </div>
                                 </div>
                             </div>

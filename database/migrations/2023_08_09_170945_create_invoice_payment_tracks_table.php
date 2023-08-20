@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('freights', function (Blueprint $table) {
+        Schema::create('invoice_payment_tracks', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('invoice_id');
-            $table->string("agent");
-            $table->double('freight_amount_usd');
-            $table->string('freight_invoice_no');
-            $table->double('miscellaneous_expense');
-            $table->string('miscellaneous_invoice_no');
-            $table->string('mbl_no');
-            $table->double('insurance_amount');
-            $table->enum('bill_paid', ['yes', 'no'])->default('yes');
+            $table->double('amount');
+            $table->enum('status_payment',['unpaid','paid','partial-payment'])->default('unpaid');
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('freights');
+        Schema::dropIfExists('invoice_payment_tracks');
     }
 };

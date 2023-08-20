@@ -50,7 +50,7 @@ class BankController extends Controller
                 $item->receipt_bank_ref_no,
                 $item->receipt_amount,
                 $item->bank_charge,
-                ' <a href="' . url('/bank-invoice/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
+                ' <a href="' . url('/banking/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
 
             );
         }

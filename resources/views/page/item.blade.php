@@ -47,8 +47,7 @@
             </div>
         </div>
 
-    </div>
-    {{-- add item module --}}
+         {{-- add item module --}}
     <div class="col-lg-4 col-md-6">
         <small class="text-light fw-semibold">Default</small>
         <div class="mt-3">
@@ -125,6 +124,8 @@
             </div>
         </div>
     </div>
+    </div>
+   
 @section('js')
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery.dataTables.js') }}"></script>

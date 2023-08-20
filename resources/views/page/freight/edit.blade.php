@@ -41,7 +41,11 @@
                                             value="{{ $freight->invoice_id }}">
 
                                     </div>
-
+                                    <div class="mb-3">
+                                        <label for="defaultInput" class="form-label">MBL No/Shipping Line</label>
+                                        <input id="defaultInput" class="form-control" type="text" name="mbl_no" value="{{$freight->mbl_no}}"
+                                            placeholder="Enter MBL No/Shipping Line ...." />
+                                    </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Forwarder/Agent</label>
                                         <input id="defaultInput" class="form-control" type="text" name="agent"

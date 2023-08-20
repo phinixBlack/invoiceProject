@@ -17,5 +17,6 @@ class Freight extends Model
         "miscellaneous_expense",
         "insurance_amount",
         "bill_paid",
+        "mbl_no"
     ];
 }

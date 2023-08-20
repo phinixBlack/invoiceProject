@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
-            <span class="app-brand-logo demo">
+            {{-- <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
@@ -44,8 +44,10 @@
                         </g>
                     </g>
                 </svg>
-            </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            </span> --}}
+            {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span> --}}
+            <img src="{{asset('public/logo.jpg')}}" style="width: 77px;
+            height: 66px;">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -90,7 +92,7 @@
     <li class="menu-item">
         <a href="{{ route('bank.bank.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="bank.bank.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}} "  >
             <i class="menu-icon tf-icons bx bx-detail"></i>
-            <div data-i18n="Analytics">Bank Invoice</div>
+            <div data-i18n="Analytics">Banking</div>
         </a>
     </li>
     <li class="menu-item">
@@ -99,6 +101,13 @@
             <div data-i18n="Analytics">Company</div>
         </a>
     </li>
+    <li class="menu-item">
+        <a href="{{ route('report.report.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="report.report.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}} "  >
+            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <div data-i18n="Analytics">Report</div>
+        </a>
+    </li>
+
 
     </ul>
 </aside>
