@@ -35,7 +35,7 @@ return new class extends Migration
             $table->date('import_inv_date');
             $table->string('bank_name');
             $table->string('incoterms');
-            $table->string('trading_co');
+            $table->bigInteger('trading_co');
             $table->string('buying_rate');
             $table->string('unit_measure');
             $table->string('mark');

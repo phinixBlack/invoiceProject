@@ -165,7 +165,7 @@
                                     <select id="defaultSelect" class="form-select" name="trading_co">
                                         <option value="">select....</option>
                                         @foreach ($company as $key => $obj)
-                                                <option value="{{ $obj->company_name }}">{{ ucfirst($obj->company_name) }}</option>
+                                                <option value="{{ $obj->id }}">{{ ucfirst($obj->company_name) }}</option>
                                         @endforeach
                                     </select>
                             </div>

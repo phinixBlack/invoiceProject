@@ -132,6 +132,10 @@ class ReportController extends Controller
         $data = [];
         foreach ($invoices as $invoice) {
             $freights = Freight::where('invoice_id', $invoice->id)->first();
+            $value = 0;
+            if(!empty($freights)){
+                $value =$freights->freight_amount_usd + $freights->miscellaneous_expense;
+            }
             $bankInvoice = BankInvoice::where('invoice_id', $invoice->id)->first();
             $buyers = Customer::select('name')->find($invoice->buyer_id);
             $seller = Customer::select('name')->find($invoice->seller_id);
@@ -168,7 +172,7 @@ class ReportController extends Controller
                 !empty($bankInvoice->receipt_amount)  ? $bankInvoice->receipt_amount : "",
                 !empty($bankInvoice->bank_charge)  ? $bankInvoice->bank_charge : "",
                 !empty($freights->insurance_amount)  ? $freights->insurance_amount : "",
-                ($freights->freight_amount_usd + $freights->miscellaneous_expense) != 0   ? $freights->freight_amount_usd + $freights->miscellaneous_expense    : "",
+                $value !=0 ? $value    : "0",
                 !empty($freights->bill_paid)   ? $freights->bill_paid : "",    /// not sure
 
             );

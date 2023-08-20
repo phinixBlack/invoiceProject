@@ -156,7 +156,7 @@ class InvoiceController extends Controller
                 DB::commit();
                 return response()->json(['status' => true, 'msg' => 'Save successfully']);
             } catch (Exception $e) {
-                return response()->json(['status' => false, 'msg' => $e->getMessage()]);
+                return response()->json(['status' => false, 'msg' => "Something went wrong"]);
                 DB::rollBack();
             }
         } catch (Exception $e) {
@@ -198,16 +198,19 @@ class InvoiceController extends Controller
         $seller = Customer::select('name')->find($invoice->seller_id);
         $port_loading = Port::select('name')->find($invoice->port_loading_id);
         $port_discharge = Port::select('name')->find($invoice->port_of_discharge);
-        $company = Company::where('company_name', $invoice->trading_co)->first();
+        $company = Company::where('id', $invoice->trading_co)->first();
         $invoice['buyer_name'] = $buyers->name;
         $invoice['address'] = $buyers->address;
         $invoice['trading_address'] = $company->address;
-        $invoice['port_loading'] = $port_loading->name;
+        $invoice['bank_name'] = $company->bank_name;
+        $invoice['bank_address'] = $company->bank_address;
+        $invoice['company_name'] = $company->company_name;
+        $invoice['swift_code'] = $company->swift_code;
+        $invoice['account_no'] = $company->account_no;
+         $invoice['port_loading'] = $port_loading->name;
         $invoice['port_discharge'] = $port_discharge->name;
-
-        return view('page.invoice.commercial', compact('invoice'));
-        // $pdf = Pdf::loadView('page.invoice.commercial', ['invoice' => $invoice]);
-        // return $pdf->download('invoiceCommercial.pdf');
+        $pdf = Pdf::loadView('page.invoice.commercial', ['invoice' => $invoice]);
+        return $pdf->download('invoiceCommercial.pdf');
     }
 
     public function editStore(Request $request)
@@ -284,7 +287,7 @@ class InvoiceController extends Controller
                 DB::commit();
                 return response()->json(['status' => true, 'msg' => 'Save successfully']);
             } catch (Exception $e) {
-                return response()->json(['status' => false, 'msg' => $e->getMessage()]);
+                return response()->json(['status' => false, 'msg' => "Something went wrong"]);
                 DB::rollBack();
             }
         } catch (Exception $e) {
