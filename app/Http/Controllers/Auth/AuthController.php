@@ -38,7 +38,7 @@ class AuthController extends Controller
                 return response()->json(['status' => false, 'msg' => 'Incorrect details']);
             }
         } catch (Exception $e) {
-
+               dd($e->getMessage());
             return response()->json(['status' => false, 'msg' =>  "Something went wrong"]);
         }
     }

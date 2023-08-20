@@ -7,7 +7,10 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\FreightController;
+use App\Http\Controllers\Admin\ReportController;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +66,10 @@ Route::middleware(['user.guard'])->group(function () {
     Route::post('/invoice/create/store', [InvoiceController::class, 'createStore'])->name('invoice.create.store');
     Route::get('/invoice/edit/{id}', [InvoiceController::class, 'edit'])->name('invoice.edit');
     Route::post('/invoice/edit/store', [InvoiceController::class, 'editStore'])->name('invoice.edit.store');
+    Route::get('/invoice/print/{id}', [InvoiceController::class, 'print'])->name('invoice.print');
+    Route::get('/invoice/print/commercial/{id}', [InvoiceController::class, 'printCommercial'])->name('invoice.print.commercial');
+    Route::post('/invoice/status',[InvoiceController::class,'invoiceStatus'])->name('invoice.status.store');
+
 
     Route::view('/freight', 'page.freight.freight')->name('freight.freight.index');
     Route::get('/freight-ajax', [FreightController::class, 'freightAjax'])->name('freight.ajax');
@@ -71,22 +78,30 @@ Route::middleware(['user.guard'])->group(function () {
     Route::get('/freight/edit/{id}', [FreightController::class, 'edit'])->name('freight.edit');
     Route::post('/freight/edit', [FreightController::class, 'editStore'])->name('freight.edit.store');
    
-    Route::view('/bank-invoice', 'page.bank.bank')->name('bank.bank.index');
-    Route::get('/bank-invoice-ajax', [BankController::class, 'bankAjax'])->name('bank.ajax');
-    Route::get('/bank-invoice/create', [BankController::class, 'create'])->name('bank.create.index');
-    Route::post('/bank-invoice/create', [BankController::class, 'createStore'])->name('bank.create.store');
-    Route::get('/bank-invoice/edit/{id}', [BankController::class, 'edit'])->name('bank.edit');
-    Route::post('/bank-invoice/edit', [BankController::class, 'editStore'])->name('bank.edit.store');
+    Route::view('/banking', 'page.bank.bank')->name('bank.bank.index');
+    Route::get('/banking-ajax', [BankController::class, 'bankAjax'])->name('bank.ajax');
+    Route::get('/banking/create', [BankController::class, 'create'])->name('bank.create.index');
+    Route::post('/banking/create', [BankController::class, 'createStore'])->name('bank.create.store');
+    Route::get('/banking/edit/{id}', [BankController::class, 'edit'])->name('bank.edit');
+    Route::post('/banking/edit', [BankController::class, 'editStore'])->name('bank.edit.store');
     
     Route::view('/company', 'page.company.company')->name('company.company.index');
     Route::get('/company-ajax', [CompanyController::class, 'companyAjax'])->name('company.ajax');
     Route::get('/company/create', [CompanyController::class, 'create'])->name('company.create.index');
     Route::post('/company/create', [CompanyController::class, 'createStore'])->name('company.create.store');
-    Route::get('/bank-invoice/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
-    Route::post('/bank-invoice/edit', [CompanyController::class, 'editStore'])->name('company.edit.store');
+    Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
+    Route::post('/company/edit', [CompanyController::class, 'editStore'])->name('company.edit.store');
   
 
     Route::view('/report','page.report.report')->name('report.report.index');
+    Route::get('/report-ajax',[ReportController::class,'reportAjax'])->name('report.ajax');
+    Route::get('/report-ajax-print',[ReportController::class,'reportAjaxPrint'])->name('report.ajax.print');
+    // Route::get('/print',function(){
+    //  //   return view('page.report.index');
+    //     $pdf = Pdf::loadView('page.report.index');
+    
+    //     return $pdf->download('itsolutionstuff.pdf');
+    // });
    
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

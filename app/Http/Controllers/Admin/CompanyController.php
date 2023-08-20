@@ -49,7 +49,7 @@ class CompanyController extends Controller
                 $item->country,
                 $item->bank_name,
                 $item->account_no,
-                  ' <a href="' . url('/freight/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
+                  ' <a href="' . url('/company/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
 
             );
         }
@@ -87,6 +87,28 @@ class CompanyController extends Controller
         } catch (Exception $e) {
             // DB::rollBack();
             return response()->json(['status' => false, 'msg' => "Something went wrong"]);
+        }
+    }
+
+    public function edit ($id){
+        $companyId = base64_decode($id);
+        $company = Company::find($companyId);
+        return view('page.company.edit', compact('company'));
+    }
+
+    public function editStore(Request $request){
+        try {
+            $validator = Validator::make($request->all(), [
+                "company_name" => 'required',
+                "company_id" => 'required|exists:companies,id'
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
+            }
+              $company = Company::where('id', $request->company_id)->update($request->except('_token','company_id'));
+            return response()->json(['status' => true, 'msg' => "Company Detail is edited"]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'msg' => 'Something went wrong']);
         }
     }
 }

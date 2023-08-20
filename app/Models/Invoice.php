@@ -18,14 +18,14 @@ class Invoice extends Model
         'rate',
         'packs',
         'gross_weight',
-        'HS_code',
+        'hs_code',
         'invoice_date',
         'origin',
         'port_of_discharge',
-        'BL_date',
+        'bl_date',
         'bank_name',
-        'seller_id',
-        'incoterms',
+        'seller_id',         
+        'incoterms',                                                                              
         'trading_co',
         'buying_rate',
         'unit_measure',
@@ -39,7 +39,14 @@ class Invoice extends Model
         'contract_no_date',
         'quality_certi_context',
         'freight_check',
-        'bank_check'
+        'bank_check',
+        'import_inv_no',
+        'import_bl_no',
+        'import_bl_date',
+        'import_inv_date',
+        'partial_payment_attempt',
+        'freight',
+        'vessel_name'
         
     ];
 }

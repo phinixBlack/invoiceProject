@@ -44,7 +44,7 @@ class CustomerController extends Controller
             $data[] = array(
                 $i++,
                 $item->name,
-                $item->address,
+                $item->address ." ". $item->state ." ". $item->country,
                 $item->type,
                 $item->bank_name,
                 $item->HS_code,
@@ -118,28 +118,9 @@ class CustomerController extends Controller
             if ($validator->fails()) {
                 return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
             }
-            $customer = [
-                "name" => $request->name,
-                "type" => $request->type,
-                "address" => $request->address . " " . $request->state . " " . $request->country,
-                "bank_name" => $request->bank_name,
-                "bank_address" => $request->bank_address,
-                "account_no" => $request->account_no,
-                "swift_no" => $request->swift_no,
-                "IBAN_no" => $request->IBAN_no,
-                "routing_no" => $request->routing_no,
-                "port_loading" => $request->port_of_loading,
-                "port_discharge" => $request->port_of_discharge,
-                "country_origin" => $request->country_origin,
-                "incoterms" => $request->incoterms,
-                "HS_code" => $request->HS_code,
-                "country" =>  $request->country,
-                "state" => $request->state,
-            ];
-            $customer = Customer::create($customer);
+            $customer = Customer::create($request->except('_token'));
             return response()->json(['status' => true, 'msg' => 'customer created']);
         } catch (Exception $e) {
-            dd($e->getMessage());
             return response()->json(['status' => false, 'msg' => 'Something went wrong']);
         }
     }
@@ -176,25 +157,9 @@ class CustomerController extends Controller
             if ($validator->fails()) {
                 return response()->json(['status' => false, 'msg' => $validator->errors()->first()]);
             }
-            $customer = [
-                "name" => $request->name,
-                "type" => $request->type,
-                "address" => $request->address . " " . $request->state . " " . $request->country,
-                "bank_name" => $request->bank_name,
-                "bank_address" => $request->bank_address,
-                "account_no" => $request->account_no,
-                "swift_no" => $request->swift_no,
-                "IBAN_no" => $request->IBAN_no,
-                "routing_no" => $request->routing_no,
-                "port_loading" => $request->port_of_loading,
-                "port_discharge" => $request->port_of_discharge,
-                "country_origin" => $request->country_origin,
-                "incoterms" => $request->incoterms,
-                "HS_code" => $request->HS_code,
-                "country" =>  $request->country,
-                "state" => $request->state,
-            ];
-            $customer = Customer::where('id', $request->customer_id)->update($customer);
+               $request['port_loading'] = $request->port_of_loading;
+               $request['port_discharge'] = $request->port_of_discharge;
+              $customer = Customer::where('id', $request->customer_id)->update($request->except('_token','customer_id','port_of_loading','port_of_discharge'));
             return response()->json(['status' => true, 'msg' => "Customer Detail is edited"]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'msg' => 'Something went wrong']);

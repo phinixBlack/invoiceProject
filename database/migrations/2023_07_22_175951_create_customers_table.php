@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('port_loading')->nullable();
             $table->string('port_discharge')->nullable();
             $table->string('country_origin')->nullable();
+            $table->string('ifsc')->nullable();
             $table->string('HS_code')->nullable();
             $table->string('incoterms')->nullable();
             $table->enum('status',['active','inactive']);

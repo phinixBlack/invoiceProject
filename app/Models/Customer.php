@@ -24,6 +24,7 @@ class Customer extends Model
         "incoterms",
         "HS_code",
         "state",
-        "country"
+        "country",
+        "ifsc"
     ];
 }

@@ -9,7 +9,7 @@
 @endsection
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span>Bank Invoice Tab</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span>Banking Tab</h4>
         <div class="row" style="margin: 10px">
             <div class="card">
                 <div class="row card-header">
