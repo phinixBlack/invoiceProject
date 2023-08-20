@@ -169,7 +169,7 @@
                 },
                 success: function(result) {
                     if (result.status === true) {
-                      location.href = "{{ route('item.index') }}"
+                      location.href = "{{ route('dashbaord.index') }}"
 
                     } else {
                         iziToast.error({

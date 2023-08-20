@@ -197,21 +197,21 @@
 
                         <p style="text-align: center;"><span
                                 style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Bank
-                                Name & Address</span> : ICICI Bank Ltd.Sector 9D, Chandigarh India
+                                Name & Address</span> : {{$invoice->bank_name}}, {{$invoice->bank_address}}
                         </p>
                         <p style="text-align: center;"><span
                                 style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Beneficiary
-                                Name</span> : Haryana Agro Chemicals (India)
+                                Name</span> : {{$invoice->company_name}}
                         </p>
 
                         <p style="text-align: center;"><span
                                 style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Account
-                                Number</span> : 00 1306 000 379
+                                Number</span> : {{$invoice->account_no}}
                         </p>
 
                         <p style="text-align: center;"><span
                                 style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Swift</span>
-                            : ICICINBBCTS
+                            : {{$invoice->swift_code}}
                         </p>
                     </div>
                     <hr>
@@ -234,7 +234,7 @@
                 {{date('Y-m-d',strtotime($invoice->created_at))}}</span></p>
             <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">SHIPPER:
                  
-                </span>   {{$invoice->trading_co}} {{$invoice->trading_address}}
+                </span>   {{$invoice->company_name}} {{$invoice->trading_address}}
             </p>
             <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">APPLICANT:
               

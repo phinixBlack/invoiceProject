@@ -129,49 +129,7 @@
 @section('js')
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery.dataTables.js') }}"></script>
-    {{-- <script>
-        $(document).ready(function() {
 
-            $('#testingTable').dataTable({
-                "processing": true,
-                pageLength: 25,
-                "serverSide": true,
-                'checkboxes': {
-                    'selectRow': true
-                },
-                "ajax": {
-                    url: '{{ route('product.ajax') }}',
-                    dataFilter: function(categoryDetails) {
-                        var json = jQuery.parseJSON(categoryDetails);
-                        json.recordsTotal = json.recordsTotal;
-                        json.recordsFiltered = json.recordsFiltered;
-                        json.categoryDetails = json.categoryDetails;
-                        var json = jQuery.parseJSON(categoryDetails);
-                        console.log(json);
-                        return JSON.stringify(json); // return JSON string
-                    }
-                },
-                "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {},
-                "order": [
-                    [2, 'asc']
-                ],
-                "columns": [{
-                        "targets": 0,
-                        "name": "id",
-                        'searchable': false,
-                        'orderable': false
-                    },
-                    {
-                        "targets": 1,
-                        "name": "name",
-                        'searchable': false,
-                        'orderable': true
-                    },
-
-                ]
-            });
-        });
-    </script> --}}
     <script>
         $(document).ready(function() {
             $('#testingTable').DataTable({

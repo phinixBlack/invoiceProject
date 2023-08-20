@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\InvoiceController;
@@ -96,12 +97,8 @@ Route::middleware(['user.guard'])->group(function () {
     Route::view('/report','page.report.report')->name('report.report.index');
     Route::get('/report-ajax',[ReportController::class,'reportAjax'])->name('report.ajax');
     Route::get('/report-ajax-print',[ReportController::class,'reportAjaxPrint'])->name('report.ajax.print');
-    // Route::get('/print',function(){
-    //  //   return view('page.report.index');
-    //     $pdf = Pdf::loadView('page.report.index');
-    
-    //     return $pdf->download('itsolutionstuff.pdf');
-    // });
+
+    Route::get('/dashboard',[DashbordController::class,'index'])->name('dashbaord.index');
    
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

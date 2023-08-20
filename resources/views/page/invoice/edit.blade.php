@@ -200,8 +200,8 @@
                                 <select id="defaultSelect" class="form-select" name="trading_co">
                                     <option value="">select....</option>
                                     @foreach ($company as $key => $obj)
-                                        <option value="{{ $obj->company_name }}"
-                                            {{ $invoice->trading_co === $obj->company_name ? 'selected' : '' }}>
+                                        <option value="{{ $obj->id }}"
+                                            {{ $invoice->trading_co === $obj->id ? 'selected' : '' }}>
                                             {{ ucfirst($obj->company_name) }}</option>
                                     @endforeach
                                 </select>
@@ -547,7 +547,6 @@
         });
         fileReader.readAsDataURL(f);
       }
-      console.log(files);
     });
   } else {
     alert("Your browser doesn't support to File API")

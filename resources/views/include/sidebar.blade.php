@@ -60,7 +60,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item">
-            <a href="index.html" class="menu-link" style="text-decoration: none">
+            <a href="{{route('dashbaord.index')}}" class="menu-link" style="text-decoration: none">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -91,19 +91,19 @@
     </li>
     <li class="menu-item">
         <a href="{{ route('bank.bank.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="bank.bank.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}} "  >
-            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <i class="menu-icon tf-icons bx bxs-bank"></i>
             <div data-i18n="Analytics">Banking</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="{{ route('company.company.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="company.company.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}} "  >
-            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <i class="menu-icon tf-icons bx bxs-business"></i>
             <div data-i18n="Analytics">Company</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="{{ route('report.report.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="report.report.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}} "  >
-            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <i class="menu-icon tf-icons bx bxs-report"></i>
             <div data-i18n="Analytics">Report</div>
         </a>
     </li>
