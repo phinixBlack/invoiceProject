@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Paid Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="paid_amount"
+                                        <input id="defaultInput" class="form-control" type="number" name="paid_amount" step=0.001
                                             placeholder="Enter Paid Amount...." />
                                     </div>
                                     <div class="mb-3">
@@ -63,13 +63,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Receipt Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="receipt_amount"
+                                        <input id="defaultInput" class="form-control" type="number" name="receipt_amount" step=0.001
                                             placeholder="Enter Receipt Amount...." />
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Bank Charge</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="bank_charge"
+                                        <input id="defaultInput" class="form-control" type="number" name="bank_charge" step=0.001
                                             placeholder="Enter Bank Charge ..." />
                                     </div>
 
@@ -112,7 +112,7 @@
                                         position: 'topRight'
                                     });
                                     setTimeout(function() {
-                                        location.href = "{{ route('freight.freight.index') }}"
+                                        location.href = "{{ route('bank.bank.index') }}"
                                     }, 2000);
                                 } else {
                                     iziToast.error({

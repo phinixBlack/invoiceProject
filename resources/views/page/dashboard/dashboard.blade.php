@@ -249,7 +249,7 @@
                                                         <th>Date</th>
                                                         <th>Print</th>
                                                         <th>Commercial</th>
-                                                        <th>Edit</th>
+                                                        {{-- <th>Edit</th> --}}
                                                         <th>Paid Status</th>
                                                     </tr>
                                                 </thead>
@@ -291,8 +291,8 @@
                                                         <th>HS Code</th>
                                                         <th>Country Origin</th>
                                                         <th>Status</th>
-                                                        <th>Edit</th>
-                                                        <th>Delete</th>
+                                                        {{-- <th>Edit</th>
+                                                        <th>Delete</th> --}}
                     
                                                     </tr>
                                                 </thead>
@@ -336,37 +336,38 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Id</th>
-                                                        <th>No Of Container</th>
-                                                        <th>Container No / Seal No</th>
-                                                        <th>Item</th>
-                                                        <th>Quantity(Net weight)</th>
-                                                        <th>Origin Country</th>
-                                                        <th>Seller Name</th>
-                                                        <th>Buying Rate</th>
-                                                        <th>Buying Invoice No and Date</th>
-                                                        <th>Import BL No and Date</th>
-                                                        <th>Merchant company / Trading co</th>
-                                                        <th>Port Of Loading</th>
-                                                        <th>Port Of Discharge</th>
-                                                        <th>Buyer Name</th>
-                                                        <th>Selling Rate PMT</th>
-                                                        <th>Selling Invoice No</th>
-                                                        <th>Selling Invoice Date</th>
-                                                        <th>Export BL No.</th>
-                                                        <th>Export BL Date</th>
-                                                        <th>Incoterm</th>
-                                                        <th>Contacts No</th>
-                                                        <th>Documentary Credit No /LC No.</th>
-                                                        <th>Remarks</th>
-                                                        <th>Bank</th>
-                                                        <th>Payment Bank Ref No And Date</th>
-                                                        <th>Paid Amount</th>
-                                                        <th>Receipt Bank Ref No. And Date</th>
-                                                        <th>Receipt Amount</th>
-                                                        <th>Bank Charge </th>
-                                                        <th>Insurance</th>
-                                                        <th>Freight</th>
-                                                        <th>Profile Margin</th>
+                                    <th>No Of Container</th>
+                                    <th>Container No / Seal No</th>
+                                    <th>Item</th>
+                                    <th>Quantity(Net weight)</th>
+                                    <th>Origin</th>
+                                    <th>Seller Name</th>
+                                    <th>Buying Rate</th>
+                                    <th>MBL No</th>
+                                    <th>Import Inv No and Date</th>
+                                    <th>Import BL No and Date</th>
+                                    {{-- <th>Merchant company / Trading co</th> --}}
+                                    <th>Port Of Loading</th>
+                                    <th>Port Of Discharge</th>
+                                    <th>Buyer Name</th>
+                                    <th>Selling Rate PMT</th>
+                                    <th>Export Invoice No</th>
+                                    <th>Export Invoice Date</th>
+                                    <th>Export BL No.</th>
+                                    <th>Export BL Date</th>
+                                    <th>Incoterm</th>
+                                    <th>Contract No</th>
+                                    <th>LC No.</th>
+                                    {{-- <th>Remarks</th> --}}
+                                    <th>Bank</th>
+                                    <th>Import Payment Bank Ref No And Date</th>
+                                    <th>Paid Amount</th>
+                                    <th>Export Receipt Bank Ref No. And Date</th>
+                                    <th>Receipt Amount</th>
+                                    <th>Bank Charge </th>
+                                    <th>Insurance</th>
+                                    <th>Freight</th>
+                                    {{-- <th>Profile Margin</th> --}}
                                                     </tr>
                                                 </thead>
                     
@@ -401,26 +402,11 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            , made with ❤️ by
-            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+            , made By ITSoftexpert
+            
           </div>
           <div>
-            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-            <a
-              href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-              target="_blank"
-              class="footer-link me-4"
-              >Documentation</a
-            >
-
-            <a
-              href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-              target="_blank"
-              class="footer-link me-4"
-              >Support</a
-            >
+            
           </div>
         </div>
       </footer>
@@ -500,7 +486,7 @@
                         'selectRow': true
                     },
                     "ajax": {
-                        url: "{{ route('invoice.ajax') }}",
+                        url: "{{ route('invoice.ajax.dashboard') }}",
                         "type": "GET",
                         "data": function(d) {
                             d._token = "{{ csrf_token() }}";
@@ -522,12 +508,12 @@
                             'searchable': false,
                             'orderable': true
                         },
-                        {
-                            "targets": 1,
-                            "name": "name",
-                            'searchable': true,
-                            'orderable': true
-                        },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "name",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
                         {
                             "targets": 1,
                             "name": "name",
@@ -612,7 +598,7 @@
                         'selectRow': true
                     },
                     "ajax": {
-                        url: "{{ route('customer.ajax') }}",
+                        url: "{{ route('customer.ajax.dashboard') }}",
                         "type": "GET",
                         "data": function(d) {
                             d._token = "{{ csrf_token() }}";
@@ -676,18 +662,18 @@
                             'searchable': true,
                             'orderable': true
                         },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
                     ]
 
                 });
@@ -732,24 +718,24 @@
                             'searchable': true,
                             'orderable': true
                         },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
                         {
                             "targets": 1,
                             "name": "status",
@@ -950,24 +936,24 @@
                             'searchable': false,
                             'orderable': true
                         },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
                         {
                             "targets": 1,
                             "name": "status",
@@ -1176,24 +1162,24 @@
                             'searchable': false,
                             'orderable': true
                         },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
-                        {
-                            "targets": 1,
-                            "name": "status",
-                            'searchable': true,
-                            'orderable': true
-                        },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
+                        // {
+                        //     "targets": 1,
+                        //     "name": "status",
+                        //     'searchable': true,
+                        //     'orderable': true
+                        // },
                         {
                             "targets": 1,
                             "name": "status",

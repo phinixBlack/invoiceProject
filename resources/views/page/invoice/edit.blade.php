@@ -97,17 +97,27 @@
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Net Weight</label>
                                 <input id="defaultInput" class="form-control" type="number" placeholder="write...."
-                                    value="{{ $invoice->net_weight }}" name="net_weight" />
+                                    value="{{ $invoice->net_weight }}" name="net_weight"  step=0.001 />
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Rate</label>
                                 <input id="defaultInput" class="form-control" type="number" placeholder="write...."
-                                    value="{{ $invoice->rate }}" name="rate" />
+                                    value="{{ $invoice->rate }}" name="rate" step=0.001 />
+                            </div>
+                            <div class="mb-3">
+                                <label for="defaultInput" class="form-label">Pack Type</label>
+                                <select class="form-select" id="exampleFormControlSelect1"
+                                aria-label="Default select example" name="pack_type" placeholder="Pack Type" >
+                                <option value="" selected>select...</option>
+                                @foreach ($package as $key => $obj) 
+                                        <option value="{{ $obj->id }}"  {{ $invoice->pack_type === $obj->id ? 'selected' : '' }}>{{ ucfirst($obj->name) }}</option>
+                                @endforeach
+                            </select>
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Packs</label>
                                 <input id="defaultInput" class="form-control" type="number" placeholder="write...."
-                                    value="{{ $invoice->packs }}" name="packs" />
+                                    value="{{ $invoice->packs }}" name="packs" step=0.001 />
                             </div>
                             <div class="mb-3">
                                 <label for="defaultSelect" class="form-label">Unit of Measurement</label>
@@ -123,13 +133,18 @@
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Gross Weight</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
-                                    value="{{ $invoice->gross_weight }}" name="gross_weight" />
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...." step=0.001
+                                  value="{{$invoice->gross_weight}}"  name="gross_weight"  />
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1" class="form-label">HS Code</label>
                                 <input id="defaultInput" class="form-control" type="text" placeholder="write...."
                                     value="{{ $invoice->hs_code }}" name="hs_code" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Vessel Name</label>
+                                <input id="defaultInput" class="form-control" type="text" placeholder="write...." value="{{$invoice->vessel_name}}"
+                                    name="vessel_name"  />
                             </div>
                         </div>
                     </div>
@@ -209,7 +224,7 @@
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Buying Rate</label>
                                 <input id="defaultInput" class="form-control" type="number" placeholder="write...."
-                                    value="{{ $invoice->buying_rate }}" name="buying_rate" />
+                                    value="{{ $invoice->buying_rate }}" name="buying_rate"  step=0.001 />
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Import Inv No</label>
@@ -230,6 +245,11 @@
                                 <label for="defaultInput" class="form-label">Import BL Date</label>
                                 <input id="defaultInput" class="form-control" type="date" placeholder="write...."
                                     value="{{ $invoice->import_bl_date }}" name="import_bl_date" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Freight</label>
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...." value="{{$invoice->freight}}"
+                                    name="freight"  />
                             </div>
                             <input type="hidden" name="id" value="{{ $invoice->id }}">
                         </div>

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
+        Schema::create('package_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->enum('status',['active','inactive'])->default('active');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::dropIfExists('package_types');
     }
 };

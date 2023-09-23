@@ -54,7 +54,7 @@
 
     .total-amount {
         font-weight: bold;
-        color: #cc0000;
+        color: #000000;
     }
 </style>
 
@@ -78,7 +78,7 @@
                 {{$invoice->port_loading}}</p>
                 <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">To</span> :
                     {{$invoice->port_discharge}} - on account and risk of</p>
-            <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">M/S</span> : YI
+            <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">M/S</span> :
                {{$invoice->buyer_name}} , {{$invoice->address}}
             </p>
         </div>
@@ -104,12 +104,12 @@
                     <td></td>
                     <td>{{$invoice->net_weight}} M/Tons of {{strtoupper($invoice->name)}} at the rate of {{$invoice->rate}} per M/Ton {{$invoice->incoterms}}</td>
                     {{-- <td>{{$invoice->packs}} PIECES</td> --}}
-                    <td>{{$invoice->rate}}</td>
-                    <td>{{$invoice->net_weight * $invoice->rate}}</td>
+                    <td>{{number_format($invoice->rate,3)}}</td>
+                    <td>{{number_format($invoice->net_weight * $invoice->rate,3)}}</td>
                 </tr>
                 <tr>
                     <td>As Per B/L</td>
-                    <td>Total Value :</td>
+                    <td></td>
                     {{-- <td>{{$invoice->packs}} PIECES</td> --}}
                     <td></td>
                     <td></td>
@@ -119,10 +119,42 @@
             <tfoot>
                 <tr>
                     <td colspan="3" class="total-label">Total</td>
-                    <td class="total-amount">{{$invoice->net_weight * $invoice->rate}}</td>
+                    <td class="total-amount">{{number_format($invoice->net_weight * $invoice->rate,3)}}</td>
                 </tr>
             </tfoot>
         </table>
+        <div class="invoice-header">
+            <p style="text-align: right;"><span style=" text-transform: capitalize; font-weight: 700;"> USD 
+                    {{ strtoupper($invoice->text) }}</span></p>
+        </div>
+        <div class="invoice-header">
+            <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">BANK
+                    DETAILS:</span></p>
+
+            <p style="text-align: left;"><span
+                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Bank
+                    Name & Address</span> : {{ $invoice->bank_name }}, {{ $invoice->bank_address }}
+            </p>
+            <p style="text-align:left;"><span
+                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Beneficiary
+                    Name</span> : {{ $invoice->company_name }}
+            </p>
+
+            <p style="text-align:left;"><span
+                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Account
+                    Number</span> : {{ $invoice->account_no }}
+            </p>
+
+            <p style="text-align:left;"><span
+                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Swift</span>
+                : {{ $invoice->swift_code }}
+            </p>
+            <p style="text-align:left;"><span
+                style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">IFSC</span>
+            : {{ $invoice->ifsc }}
+        </p>
+            </
+        </div>
     </div>
 
     <!-- PACKING LIST section start -->
@@ -139,41 +171,46 @@
             </p>
             <p> <span style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Details are as
                     under:</p>
-            <p style="text-align: left;"><span
-                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Container
-                    No</span>. {{$invoice->container_no}}</p>
-            <p style="text-align: left;"><span
-                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Seal No</span>.
-                {{$invoice->seal_no}}</p>
+                    <p style="text-align: left;"><span
+                        style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">MARKS AND
+                        NUMBERS</span>. {{ $invoice->mark }}</p>
+                        <p style="text-align: left;"><span
+                            style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">CONTAINER
+                            NO./SEAL
+                            NO.</span> :
+                        @foreach($invoice['container'] as $key => $obj)
+                            {{ $obj['container_no'] }} / {{ $obj['seal_no'] }} ,
+                        @endforeach
+                    </p>
         </div>
         <table class="invoice-table">
             <thead>
                 <tr>
                     <th>Item Name</th>
-                    <th>Gross Weight</th>
-                    <th>Net Weight</th>
+                    <th>Gross Weight {{strtoupper($invoice->unit_measure)}}</th>
+                    <th>Net Weight {{strtoupper($invoice->unit_measure)}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td style="text-align: center;">{{$invoice->name}}</td>
-                    <td style="text-align: center;">{{$invoice->gross_weight}}</td>
-                    <td style="text-align: center;">{{$invoice->net_weight}}</td>
+                    <td style="text-align: center;">{{number_format($invoice->gross_weight,3)}}</td>
+                    <td style="text-align: center;">{{number_format($invoice->net_weight,3)}}</td>
                 </tr>
             </tbody>
         </table>
         <div class="invoice-header">
             <p style="text-align: left;"><span
                     style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Total Net
-                    Weight</span> : {{$invoice->net_weight}} {{strtoupper($invoice->unit_measure)}}</p>
+                    Weight</span> : {{number_format($invoice->net_weight,3)}} {{strtoupper($invoice->unit_measure)}}</p>
             <p style="text-align: left;"><span
                     style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Total Gross
-                    Weight</span> : {{$invoice->gross_weight}} {{strtoupper($invoice->unit_measure)}}</p>
+                    Weight</span> : {{number_format($invoice->gross_weight,3)}} {{strtoupper($invoice->unit_measure)}}</p>
             <p style="text-align: left;"><span
                     style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Packages</span> :
-                    {{$invoice->packs}} Pieces</p>
+                    {{$invoice->packs}} {{ $invoice->packageType }}</p>
             <p style="text-align: left;"><span style=" text-transform: capitalize; font-weight: 700;">SHIPPED ON BOARD
-                    ON VESSEL VIDE B/L NO. 160113008404 Dated 14 Apr 2023</span></p>
+                    ON VESSEL VIDE B/L NO. {{$invoice->bl_no}} Dated {{$invoice->bl_date}}</span></p>
             <p style="text-align: left;"><span
                     style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Loaded on Account
                     of</span> :   {{$invoice->buyer_name}} , {{$invoice->address}}
@@ -192,8 +229,8 @@
 
         <div class="invoice-header">
             <p style="text-align: left;">We hereby certify and declare that <span
-                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">Galvalume
-                    Dross</span>
+                    style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">{{$invoice->name}}
+                    </span>
                 supplied to
                 <span style="text-decoration: underline; text-transform: capitalize; font-weight: 700;">  {{$invoice->buyer_name}} , {{$invoice->address}}</span> against our Invoice No.
                 <span style="text-decoration: underline; text-transform: capitalize; font-weight: 700;"> {{$invoice->invoice_id}}</span>

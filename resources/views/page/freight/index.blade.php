@@ -63,7 +63,7 @@
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Fright Amount (USD)</label>
                                         <input id="defaultInput" class="form-control" type="number"
-                                            name="freight_amount_usd" placeholder="Enter Fright Amount (USD) ..." />
+                                            name="freight_amount_usd" placeholder="Enter Fright Amount (USD) ..."   step=0.001 />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Miscellaneous Invoice No</label>
@@ -75,11 +75,11 @@
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Miscellaneous Expense </label>
                                         <input id="defaultInput" class="form-control" type="number"
-                                            name="miscellaneous_expense" placeholder="Enter Miscellaneous Expense ..." />
+                                            name="miscellaneous_expense" placeholder="Enter Miscellaneous Expense ..."   step=0.001  />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Insurance Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="insurance_amount"
+                                        <input id="defaultInput" class="form-control" type="number" name="insurance_amount"    step=0.001  
                                             placeholder="Enter Insurance Amount ..." />
                                     </div>
                                     <div class="mb-3">

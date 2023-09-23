@@ -72,6 +72,18 @@
             </a>
         </li>
         <li class="menu-item">
+            <a href="{{ route('port.index') }}" class="menu-link" style="text-decoration: none;{{Route::current()->getName() ==="port.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}}">
+                <i class="menu-icon tf-icons bx bxs-ship"></i>
+                <div data-i18n="Analytics">Port</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('packageType.index') }}" class="menu-link" style="text-decoration: none;{{Route::current()->getName() ==="packageType.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}}">
+                <i class="menu-icon tf-icons bx bxs-package"></i>
+                <div data-i18n="Analytics">Package Type</div>
+            </a>
+        </li>
+        <li class="menu-item">
           <a href="{{ route('customer.customer.index') }}" class="menu-link" style="text-decoration: none ;{{Route::current()->getName() ==="customer.customer.index" ?"background-color: rgba(67, 89, 113, 0.04)":""}}">
               <i class="menu-icon tf-icons bx bx-group"></i>
               <div data-i18n="Analytics">Customer</div>

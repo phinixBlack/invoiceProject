@@ -9,17 +9,17 @@
 @endsection
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Invoice Tab</h4>
-        <div class="row" style="margin: 10px">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Port Tab</h4>
+        <div class="row">
             <div class="card">
                 <div class="row card-header">
                     <div class="col">
                         <h5 class="">Reports</h5>
                     </div>
-                    <div class="col align-self-end "> <a href="{{ route('invoice.create.index') }}" class="btn btn-primary"
-                            style="margin-left: 428px">
-                            Create Invoice
-                        </a></div>
+                    <div class="col align-self-end "> <button type="button" class="btn btn-primary"
+                            style="margin-left: 448px" data-bs-toggle="modal" data-bs-target="#addModule">
+                            Add Port
+                        </button></div>
                 </div>
 
 
@@ -29,19 +29,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Invoice Id</th>
-                                    <th>Item Name</th>
-                                    <th>Buyer</th>
-                                    <th>Seller</th>
-                                    <th>HS Code</th>
-                                    <th>Country Origin</th>
-                                    <th>Loading Port</th>
-                                    <th>Discharge Port</th>
-                                    <th>Date</th>
-                                    <th>Print</th>
-                                    <th>Commercial</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
                                     <th>Edit</th>
-                                    <th>Paid Status</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
 
@@ -51,67 +42,89 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6">
-            <small class="text-light fw-semibold">Default</small>
-            <div class="mt-3">
-                <!-- Button trigger modal -->
+         {{-- add item module --}}
+    <div class="col-lg-4 col-md-6">
+        <small class="text-light fw-semibold">Default</small>
+        <div class="mt-3">
+            <!-- Button trigger modal -->
 
 
-                <!-- Modal -->
-                <div class="modal fade" id="editModule" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel1">Edit Item</h5>
-                                <button type="button" class="btn-close addItem" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form id="statusModal" class="mb-3" action="#" method="POST">
-                                <input type="hidden" name="id" id="invoiceId">
-                                <input type="hidden" name="total" id="totalInvoice">
-                                <input type="hidden" name="left" id="leftInvoice">
-                                <div class="modal-body">
-                                    <span id="testing"></span>
-                                   
-                                    <div class="row">
-                                        <div class="col mb-3">
-                                            <label for="nameBasic" class="form-label">Payment Status</label>
-                                            <select class="form-select" id="exampleFormControlSelect1"
-                                                aria-label="Default select example" name="payment_type">
-                                                <option style="color: #697a8d;" value="">select or write...</option>
-                                                {{-- <option value="unpaid">UNPAID </option> --}}
-                                                <option value="paid" selected>PAID</option>
-                                                <option value="partial-payment">PARTIAL-PAYMENT </option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col mb-3">
-                                            <label for="nameBasic" class="form-label">Payment Amount</label>
-                                            <input type="number" name="amount" class="form-select" id="payment-amount"
-                                                readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
+            <!-- Modal -->
+            <div class="modal fade" id="addModule" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel1">Add Port</h5>
+                            <button type="button" class="btn-close addItem" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
+                        <form id="itemForm" class="mb-3" action="#" method="POST">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="nameBasic" class="form-label">Port Name</label>
+                                        <input type="text" id="nameBasic" class="form-control" name="name"
+                                            placeholder="Enter Item Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- edit item moddule --}}
+    <div class="col-lg-4 col-md-6">
+        <small class="text-light fw-semibold">Default</small>
+        <div class="mt-3">
+            <!-- Button trigger modal -->
 
+
+            <!-- Modal -->
+            <div class="modal fade" id="editModule" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel1">Edit Port</h5>
+                            <button type="button" class="btn-close addItem" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form id="itemEdit" class="mb-3" action="#" method="POST">
+                            <input type="hidden" name="id" id="portId">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="nameBasic" class="form-label">Port Name</label>
+                                        <input type="text" id="portName" class="form-control" name="name"
+                                            placeholder="Enter Item Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+   
 @section('js')
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/datatable/js/jquery.dataTables.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#testingTable').DataTable({
@@ -123,7 +136,7 @@
                     'selectRow': true
                 },
                 "ajax": {
-                    url: "{{ route('invoice.ajax') }}",
+                    url: "{{ route('port.ajax') }}",
                     "type": "GET",
                     "data": function(d) {
                         d._token = "{{ csrf_token() }}";
@@ -153,18 +166,6 @@
                     },
                     {
                         "targets": 1,
-                        "name": "name",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "name",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
                         "name": "status",
                         'searchable': true,
                         'orderable': true
@@ -172,48 +173,6 @@
                     {
                         "targets": 1,
                         "name": "name",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
                         'searchable': true,
                         'orderable': true
                     },
@@ -232,7 +191,7 @@
                 fd.append('_token', "{{ csrf_token() }}");
 
                 $.ajax({
-                    url: "{{ route('customer.store') }}",
+                    url: "{{ route('port.store') }}",
                     type: "post",
                     data: fd,
                     dataType: "JSON",
@@ -269,7 +228,7 @@
                 fd.append('id', id);
                 fd.append('status', status);
                 $.ajax({
-                    url: "{{ route('customer.edit.status') }}",
+                    url: "{{ route('port.edit.status') }}",
                     type: "post",
                     data: fd,
                     dataType: "JSON",
@@ -295,7 +254,7 @@
                     }
                 })
             });
-            $('body').on('click', '.delteCustomer', function() {
+            $('body').on('click', '.delteport', function() {
 
                 let body = $(this).parent();
                 let id = $(this).data('id');
@@ -317,7 +276,7 @@
                     function(isConfirm) {
                         if (isConfirm) {
                             $.ajax({
-                                url: "{{ route('customer.delete') }}",
+                                url: "{{ route('port.delete') }}",
                                 type: "post",
                                 data: fd,
                                 dataType: "JSON",
@@ -347,39 +306,22 @@
                     });
 
             });
+            $('body').on('click', '.editport', function() {
 
-        });
-        $('body').on('click', '#paidStatus', function() {
-            let body = $(this).parent();
-            let total = $(this).data('total');
-            let id = $(this).data('id');
-            let transaction = $(this).data('amount');
-            let html = `<div class="row"><div class="col md-3">Total Amount : ${total}</div>
-                                   <div class="col md-3" id="left_amount" data-left="${transaction}">Amount left : ${transaction}</div></div>`
-                                   $('#payment-amount').val(transaction)   
-                                   $('#invoiceId').val(id)
-                                   $('#totalInvoice').val(total)
-                                   $('#leftInvoice').val(transaction)
-                                   
-            $('#testing').html(html)
-            $('#editModule').modal('show');
-        });
-        $('#exampleFormControlSelect1').on('change', function() {
-            if ($(this).val() == 'partial-payment') {
-                $('#payment-amount').removeAttr('readonly');
-            } else {
-                $('#payment-amount').attr('readonly', 'true');
-                $('#payment-amount').val($('#left_amount').attr("data-left"));
-            }
-        })
-
-        $('#statusModal').submit(function(e) {
+                let body = $(this).parent();
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+                $('#portId').val(id);
+                $('#portName').val(name);
+                $('#editModule').modal('show');
+            });
+            $('#itemEdit').submit(function(e) {
                 e.preventDefault();
                 var fd = new FormData(this);
                 fd.append('_token', "{{ csrf_token() }}");
 
                 $.ajax({
-                    url: "{{ route('invoice.status.store') }}",
+                    url: "{{ route('port.edit') }}",
                     type: "post",
                     data: fd,
                     dataType: "JSON",
@@ -394,7 +336,7 @@
                                 message: result.msg,
                                 position: 'topRight'
                             });
-                             $('.addItem').click();
+                            $('.addItem').click();
                             $('#testingTable').DataTable().ajax.reload(null, false);
 
                         } else {
@@ -406,6 +348,10 @@
                     }
                 })
             });
+
+
+
+        });
     </script>
 @endsection
 @endsection

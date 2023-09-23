@@ -48,11 +48,12 @@ class FreightController extends Controller
                 $item->invoice_name,
                 $item->agent,
                 $item->freight_invoice_no,
-                $item->freight_amount_usd . " USD",
+                number_format($item->freight_amount_usd,3) . " USD",
                 $item->miscellaneous_invoice_no,
-                $item->miscellaneous_expense,
-                $item->insurance_amount,
+                number_format($item->miscellaneous_expense,3),
+                number_format($item->insurance_amount,3),
                 $item->bill_paid,
+                $item->mbl_no,
                 ' <a href="' . url('/freight/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
 
             );

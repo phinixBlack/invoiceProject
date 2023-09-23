@@ -69,7 +69,7 @@
 	  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 	  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 	  <script src="{{asset('public/assets/js/config.js')}}"></script>
-  </head>
+  </head> 
 
   <body>
     <!-- Layout wrapper -->
@@ -103,26 +103,11 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                  , made by ITSoftexpert
+                 
                 </div>
                 <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
+                 
                 </div>
               </div>
             </footer>

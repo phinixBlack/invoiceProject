@@ -119,7 +119,7 @@
                             <div class="card mb-4">
                                 <h5 class="card-header">Port Information</h5>
                                 <div class="card-body">
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Port Of Loading</label>
                                         <input id="defaultInput" class="form-control" type="text"
                                             name="port_of_loading" placeholder="Enter Port Of Loading..." />
@@ -128,7 +128,7 @@
                                         <label for="defaultInput" class="form-label">Port Of Discharge</label>
                                         <input id="defaultInput" class="form-control" type="text"
                                             name="port_of_discharge" placeholder="Enter Port Of Discharge..." />
-                                    </div>
+                                    </div> --}}
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Country Of Origin</label>
                                         <input id="defaultInput" class="form-control" type="text"
