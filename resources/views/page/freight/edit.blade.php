@@ -53,14 +53,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Freight Invoice No</label>
-                                        <input id="defaultInput" class="form-control" type="text"
-                                            value={{ $freight->freight_invoice_no }} name="freight_invoice_no"
+                                        <input id="defaultInput" class="form-control" type="number"
+                                            value={{ $freight->freight_invoice_no }} name="freight_invoice_no"  step=0.001
                                             placeholder="Enter Freight Invoice No...." />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Fright Amount (USD)</label>
                                         <input id="defaultInput" class="form-control" type="number"
-                                            value={{ $freight->freight_amount_usd }} name="freight_amount_usd"
+                                            value={{ $freight->freight_amount_usd }} name="freight_amount_usd"  step=0.001
                                             placeholder="Enter Fright Amount (USD) ..." />
                                     </div>
                                     <div class="mb-3">
@@ -73,12 +73,12 @@
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Miscellaneous Expense </label>
                                         <input id="defaultInput" class="form-control" type="number"
-                                            value={{ $freight->miscellaneous_expense }} name="miscellaneous_expense"
+                                            value={{ $freight->miscellaneous_expense }} name="miscellaneous_expense"  step=0.001
                                             placeholder="Enter Miscellaneous Expense ..." />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Insurance Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="insurance_amount"
+                                        <input id="defaultInput" class="form-control" type="number" name="insurance_amount"  step=0.001
                                             value={{ $freight->insurance_amount }}
                                             placeholder="Enter Insurance Amount ..." />
                                     </div>

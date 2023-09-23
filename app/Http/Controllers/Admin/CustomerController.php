@@ -165,4 +165,52 @@ class CustomerController extends Controller
             return response()->json(['status' => false, 'msg' => 'Something went wrong']);
         }
     }
+
+    public function customerAjaxDashboard(Request $request)
+    {
+        if (isset($_GET['search']['value'])) {
+            $search = $_GET['search']['value'];
+        } else {
+            $search = '';
+        }
+
+        if (isset($_GET['length'])) {
+            $limit = $_GET['length'];
+        } else {
+            $limit = 25;
+        }
+
+        if (isset($_GET['start'])) {
+            $ofset = $_GET['start'];
+        } else {
+            $ofset = 0;
+        }
+
+        $total = Customer::get()->count();
+        $items = Customer::orWhere(function ($query) use ($search) {
+            $query->orWhere('name', 'like', '%' . $search . '%');
+        })->where('soft_delete','true')->offset($ofset)->limit($limit)->orderBy('id', 'DESC')->get();
+
+        $i = 1 + $ofset;
+        $data = [];
+        foreach ($items as $item) {
+            $status = '<button type="button" class="btn ' . ($item->status == "active" ? "btn-success" : " btn-danger") . ' btn-sm w-100 statusChange" data-id="' . $item->id . '" data-status="' . ($item->status === 'active' ? 'inactive' : 'active') . '">' . $item->status . '</button>';
+
+            $data[] = array(
+                $i++,
+                $item->name,
+                $item->address ." ". $item->state ." ". $item->country,
+                $item->type,
+                $item->bank_name,
+                $item->HS_code,
+                $item->country_origin,
+                $item->status,
+               
+            );
+        }
+        $records['recordsTotal'] = $total;
+        $records['recordsFiltered'] =  $total;
+        $records['data'] = $data;
+        echo json_encode($records);
+    }
 }

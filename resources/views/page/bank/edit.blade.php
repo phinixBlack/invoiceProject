@@ -29,7 +29,7 @@
                         <div class="col-md-12">
 
                             <div class="card mb-4" style="padding:2px">
-                                <h5 class="card-header">Freight Edit</h5>
+                                <h5 class="card-header">Bank Edit</h5>
                                 <div class="card-body">
 
                                     <div class="mb-3">
@@ -49,23 +49,23 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Paid Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="paid_amount" value="{{ $bankInvoice->paid_amount }}"
+                                        <input id="defaultInput" class="form-control" type="number" name="paid_amount" value="{{ $bankInvoice->paid_amount }}"   step=0.001
                                             placeholder="Enter Paid Amount...." />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Receipt Bank Ref No</label>
-                                        <input id="defaultInput" class="form-control" type="text" value="{{ $bankInvoice->receipt_bank_ref_no }}"
+                                        <input id="defaultInput" class="form-control" type="" value="{{ $bankInvoice->receipt_bank_ref_no }}"
                                             name="receipt_bank_ref_no" placeholder="Enter Receipt Bank Ref No ..." />
                                     </div>
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Receipt Amount</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="receipt_amount"  value="{{ $bankInvoice->receipt_amount }}"
+                                        <input id="defaultInput" class="form-control" type="number" name="receipt_amount"  value="{{ $bankInvoice->receipt_amount }}"  step=0.001
                                             placeholder="Enter Receipt Amount...." />
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="defaultInput" class="form-label">Bank Charge</label>
-                                        <input id="defaultInput" class="form-control" type="number" name="bank_charge"  value="{{ $bankInvoice->bank_charge }}"
+                                        <input id="defaultInput" class="form-control" type="number" name="bank_charge"  value="{{ $bankInvoice->bank_charge }}"  step=0.001
                                             placeholder="Enter Bank Charge ..." />
                                     </div>
                                     <input type="hidden" name="id" value="{{ $bankInvoice->id }}">

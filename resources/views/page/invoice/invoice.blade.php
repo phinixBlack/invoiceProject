@@ -394,7 +394,7 @@
                                 message: result.msg,
                                 position: 'topRight'
                             });
-                            // $('.addItem').click();
+                             $('.addItem').click();
                             $('#testingTable').DataTable().ajax.reload(null, false);
 
                         } else {

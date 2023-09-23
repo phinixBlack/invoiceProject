@@ -46,7 +46,9 @@ class Invoice extends Model
         'import_inv_date',
         'partial_payment_attempt',
         'freight',
-        'vessel_name'
+        'vessel_name',
+        'pack_type'
+        
         
     ];
 }

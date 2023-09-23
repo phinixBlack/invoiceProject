@@ -64,17 +64,27 @@
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Net Weight</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...." step=0.001
                                     name="net_weight"  />
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Rate</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."  step=0.001
                                     name="rate"  />
                             </div>
                             <div class="mb-3">
+                                <label for="defaultInput" class="form-label">Pack Type</label>
+                                <select class="form-select" id="exampleFormControlSelect1"
+                                aria-label="Default select example" name="pack_type" placeholder="Pack Type" >
+                                <option value="" selected>select...</option>
+                                @foreach ($package as $key => $obj) 
+                                        <option value="{{ $obj->id }}">{{ ucfirst($obj->name) }}</option>
+                                @endforeach
+                            </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Packs</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."  step=0.001
                                     name="packs"  />
                             </div>
                             <div class="mb-3">
@@ -90,7 +100,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Gross Weight</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...." step=0.001
                                     name="gross_weight"  />
                             </div>
                             <div class="mb-3">
@@ -171,7 +181,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="defaultInput" class="form-label">Buying Rate</label>
-                                <input id="defaultInput" class="form-control" type="number" placeholder="write...."
+                                <input id="defaultInput" class="form-control" type="number" placeholder="write...." step=0.001
                                     name="buying_rate" />
                             </div>
                             <div class="mb-3">

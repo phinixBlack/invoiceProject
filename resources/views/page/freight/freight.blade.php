@@ -37,6 +37,7 @@
                                     <th>Miscellaneous Expense</th>
                                     <th>Insurance Amount</th>
                                     <th>Bill Paid</th>
+                                    <th>MBL NO/SHIPPING LINE</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
@@ -83,6 +84,12 @@
                         "targets": 0,
                         "name": "id",
                         'searchable': false,
+                        'orderable': true
+                    },
+                    {
+                        "targets": 1,
+                        "name": "name",
+                        'searchable': true,
                         'orderable': true
                     },
                     {

@@ -46,10 +46,10 @@ class BankController extends Controller
                 $i++,
                 $item->invoice_name,
                 $item->payment_bank_ref_no,
-                $item->paid_amount,
+                number_format($item->paid_amount,3),
                 $item->receipt_bank_ref_no,
-                $item->receipt_amount,
-                $item->bank_charge,
+                number_format($item->receipt_amount,3),
+                number_format($item->bank_charge,3),
                 ' <a href="' . url('/banking/edit/' . base64_encode($item->id)) . '" class="btn btn-primary btn-sm w-100 edit_catories1" >Edit</a>',
 
             );
@@ -85,7 +85,7 @@ class BankController extends Controller
             $freight = BankInvoice::create($request->all());
             $invoice = Invoice::where('id', $request->invoice_id)->update(['bank_check' => true]);
             DB::commit();
-            return response()->json(['status' => true, 'msg' => "Freight add successfully"]);
+            return response()->json(['status' => true, 'msg' => "Bank add successfully"]);
         } catch (Exception $e) {
             DB::rollBack();
             return response()->json(['status' => false, 'msg' => "Something went wrong"]);

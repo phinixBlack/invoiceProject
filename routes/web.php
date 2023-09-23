@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\FreightController;
+use App\Http\Controllers\Admin\PackageTypeController;
+use App\Http\Controllers\Admin\PortController;
 use App\Http\Controllers\Admin\ReportController;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
@@ -97,8 +99,28 @@ Route::middleware(['user.guard'])->group(function () {
     Route::view('/report','page.report.report')->name('report.report.index');
     Route::get('/report-ajax',[ReportController::class,'reportAjax'])->name('report.ajax');
     Route::get('/report-ajax-print',[ReportController::class,'reportAjaxPrint'])->name('report.ajax.print');
+    Route::get('/report-ajax-excel',[ReportController::class,'reportAjaxPrintExcel'])->name('report.ajax.print.excel');
+    Route::get('/report-ajax-excel-second',[ReportController::class,'reportAjaxPrintExcelSecond'])->name('report.ajax.print.excel.second');
 
     Route::get('/dashboard',[DashbordController::class,'index'])->name('dashbaord.index');
-   
+    Route::get('/invoice-ajax-dashboard', [InvoiceController::class, 'invoiceAjaxDashboard'])->name('invoice.ajax.dashboard');
+    Route::get('/customer-ajax-dashboard', [CustomerController::class, 'customerAjaxDashboard'])->name('customer.ajax.dashboard');
+
+
+    Route::view('/port', 'page.port')->name('port.index');
+    Route::get('/port-ajax', [PortController::class, 'portAjax'])->name('port.ajax');
+    Route::post('/port/store', [PortController::class, 'store'])->name('port.store');
+    Route::post('/port/edit', [PortController::class, 'portEdit'])->name('port.edit');
+    Route::post('/port/edit/status', [PortController::class, 'statusEdit'])->name('port.edit.status');
+    Route::post('/port/delete', [PortController::class, 'deletePort'])->name('port.delete');
+    
+
+    Route::view('/package-type', 'page.package-type')->name('packageType.index');
+    Route::get('/package-type-ajax', [PackageTypeController::class, 'packageTypeAjax'])->name('packageType.ajax');
+    Route::post('/package-type/store', [PackageTypeController::class, 'store'])->name('packageType.store');
+    Route::post('/package-type/edit', [PackageTypeController::class, 'packageTypeEdit'])->name('packageType.edit');
+    Route::post('/package-type/edit/status', [PackageTypeController::class, 'statusEdit'])->name('packageType.edit.status');
+    Route::post('/package-type/delete', [PackageTypeController::class, 'deletePackageType'])->name('packageType.delete');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

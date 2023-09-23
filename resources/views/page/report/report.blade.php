@@ -10,7 +10,7 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Report Tab</h4>
             </div>
             <div class="col-2 align-self-center"> <input id="start_date" class="form-control" type="date"
@@ -19,6 +19,8 @@
                     placeholder="End Date" name="end_date" /></div>
             <div class="col-1  align-self-center"><button class="btn btn-primary" id="search">Search</button></div>
             <div class="col-1 align-self-center"><button class="btn btn-primary" id="reset">Reset</button></div>
+            <div class="col-1 align-self-center"><button class="btn btn-primary" id="filter">Excel</button></div>
+            <div class="col-1 align-self-center"><button class="btn btn-primary" id="secondexcel">SendExcel</button></div>
         </div>
         <div class="row" style="margin: 10px">
             <div class="card">
@@ -39,33 +41,34 @@
                                     <th>Container No / Seal No</th>
                                     <th>Item</th>
                                     <th>Quantity(Net weight)</th>
-                                    <th>Origin Country</th>
+                                    <th>Origin</th>
                                     <th>Seller Name</th>
                                     <th>Buying Rate</th>
-                                    <th>Buying Invoice No and Date</th>
+                                    <th>MBL No</th>
+                                    <th>Import Inv No and Date</th>
                                     <th>Import BL No and Date</th>
-                                    <th>Merchant company / Trading co</th>
+                                    {{-- <th>Merchant company / Trading co</th> --}}
                                     <th>Port Of Loading</th>
                                     <th>Port Of Discharge</th>
                                     <th>Buyer Name</th>
                                     <th>Selling Rate PMT</th>
-                                    <th>Selling Invoice No</th>
-                                    <th>Selling Invoice Date</th>
+                                    <th>Export Invoice No</th>
+                                    <th>Export Invoice Date</th>
                                     <th>Export BL No.</th>
                                     <th>Export BL Date</th>
                                     <th>Incoterm</th>
-                                    <th>Contacts No</th>
-                                    <th>Documentary Credit No /LC No.</th>
-                                    <th>Remarks</th>
+                                    <th>Contract No</th>
+                                    <th>LC No.</th>
+                                    {{-- <th>Remarks</th> --}}
                                     <th>Bank</th>
-                                    <th>Payment Bank Ref No And Date</th>
+                                    <th>Import Payment Bank Ref No And Date</th>
                                     <th>Paid Amount</th>
-                                    <th>Receipt Bank Ref No. And Date</th>
+                                    <th>Export Receipt Bank Ref No. And Date</th>
                                     <th>Receipt Amount</th>
                                     <th>Bank Charge </th>
                                     <th>Insurance</th>
                                     <th>Freight</th>
-                                    <th>Profile Margin</th>
+                                    {{-- <th>Profile Margin</th> --}}
                                 </tr>
                             </thead>
 
@@ -114,9 +117,9 @@
                         'orderable': true
                     },
                     {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
+                        "targets": 0,
+                        "name": "id",
+                        'searchable': false,
                         'orderable': true
                     },
                     {
@@ -125,18 +128,24 @@
                         'searchable': true,
                         'orderable': true
                     },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
                     {
                         "targets": 1,
                         "name": "status",
@@ -337,18 +346,24 @@
                         'searchable': false,
                         'orderable': true
                     },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
+                    // {
+                    //     "targets": 0,
+                    //     "name": "id",
+                    //     'searchable': false,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
                     {
                         "targets": 1,
                         "name": "status",
@@ -563,18 +578,24 @@
                         'searchable': false,
                         'orderable': true
                     },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
-                    {
-                        "targets": 1,
-                        "name": "status",
-                        'searchable': true,
-                        'orderable': true
-                    },
+                    // {
+                    //     "targets": 0,
+                    //     "name": "id",
+                    //     'searchable': false,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
+                    // {
+                    //     "targets": 1,
+                    //     "name": "status",
+                    //     'searchable': true,
+                    //     'orderable': true
+                    // },
                     {
                         "targets": 1,
                         "name": "status",
@@ -752,6 +773,35 @@
                 ]
 
             });
+
+        });
+        $('#filter').click(function() {
+            let endDate = $('#end_date').val();
+            let startDate = $('#start_date').val();
+            if (endDate && startDate) {
+
+                location.href = `{{ url('/report-ajax-excel?data=${endDate}?${startDate}') }}`
+            } else {
+                iziToast.error({
+                    message: "need to select start date and end date",
+                    position: 'topRight'
+                });
+            }
+
+
+        });
+        $('#secondexcel').click(function() {
+            let endDate = $('#end_date').val();
+            let startDate = $('#start_date').val();
+            if (endDate && startDate) {
+                location.href = `{{ url('/report-ajax-excel-second?data=${endDate}?${startDate}') }}`
+            } else {
+                iziToast.error({
+                    message: "need to select start date and end date",
+                    position: 'topRight'
+                });
+            }
+
 
         });
     </script>
